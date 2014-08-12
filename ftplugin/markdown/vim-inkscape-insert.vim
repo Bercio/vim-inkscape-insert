@@ -5,14 +5,14 @@ endif
 let g:loaded_inkscape_insert = 1
 let g:inkscape_graphs_dir = "./Images/"
 
-if !isdirectory(g:inkscape_graphs_dir)
-    call mkdir(g:inkscape_graphs_dir, "p")
-endif
 
 if !exists("*s:Ink")
 	function s:Ink(image)
 		if getcwd() !~ expand("%:p:h")
 			cd %:p:h
+		endif
+		if !isdirectory(g:inkscape_graphs_dir)
+		    call mkdir(g:inkscape_graphs_dir, "p")
 		endif
 		let b:inline = '![' . a:image . ']('. g:inkscape_graphs_dir . a:image . '.pdf)\'
 		call append(line('.'),b:inline)
@@ -28,6 +28,4 @@ if !exists("*s:Ink")
 	endfunction
 endif
 
-function s:Define_Ink()
-	:command -nargs=1 -buffer Ink call s:Ink(<f-args>)
-endfunction
+:command -nargs=1 -buffer Ink call s:Ink(<f-args>)
