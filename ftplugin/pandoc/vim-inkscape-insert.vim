@@ -1,1 +1,1 @@
-ftplugin/markdown/vim-inkscape-insert.vim
+/home/bercio/vim-inkscape-insert/ftplugin/markdown/vim-inkscape-insert.vim

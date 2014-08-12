@@ -17,7 +17,7 @@ if !exists("*s:Ink")
 		let b:inline = '![' . a:image . ']('. g:inkscape_graphs_dir . a:image . '.pdf)\'
 		call append(line('.'),b:inline)
 		normal jo
-		if filereadable("~/.config/inkscape/templates/default.svg")
+		if filereadable(expand("~/.config/inkscape/templates/default.svg"))
 			exe ":!cp ~/.config/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image . ".svg"
 		elseif filereadable("/usr/share/inkscape/templates/default.svg")
 			exe ":!cp /usr/share/inkscape/templates/default.svg" g:inkscape_graphs_dir . a:image . ".svg"
