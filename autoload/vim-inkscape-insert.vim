@@ -1,12 +1,12 @@
 let g:inkscape_graphs_dir = "./Images/"
-function! s:vim-inkscape-insert#Ink(image)
+function! vim-inkscape-insert#Ink(image)
 	if getcwd() !~ expand("%:p:h")
 		cd %:p:h
 	endif
 	if !isdirectory(g:inkscape_graphs_dir)
 	    call mkdir(g:inkscape_graphs_dir, "p")
 	endif
-	let b:inline = '![' . a:image . ']('. g:inkscape_graphs_dir . a:image . '.pdf)\'
+	let b:inline = '![' . a:image . ']('. g:inkscape_graphs_dir . a:image . '.eps)\'
 	call append(line('.'),b:inline)
 	normal jo
 	if filereadable(expand("~/.config/inkscape/templates/default.svg"))
